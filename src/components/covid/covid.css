@@ -40,3 +40,7 @@
   font-family: 'Titillium Web', Verdana, Tahoma, sans-serif;
   box-sizing: border-box;
 }
+
+.ig-data-grid {
+  z-index: -1;
+}

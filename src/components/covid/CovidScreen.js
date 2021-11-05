@@ -5,6 +5,7 @@ import axios from 'axios';
 import API from '../../api/api';
 import { useDispatch } from 'react-redux';
 import { DataGridRowGrouping } from './ListContinents';
+import { Navbar } from '../ui/Navbar'
 import './covid.css';
 
 
@@ -18,12 +19,14 @@ export const CovidScreen = () => {
       .then(function (response) {
         console.log(response.data);
       });
-
-
+    
+    
   }, [])
 
   return (
     <>
+      <Navbar />
+      
       <div className="covid-screen">
         <DataGridRowGrouping />
       </div>

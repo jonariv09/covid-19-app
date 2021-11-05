@@ -80,6 +80,7 @@ export const DataGridRowGrouping = () => {
         </div>
 
         <IgrDataGrid
+          className="grid"
           ref={onGridRef}
           height="calc(100% - 39px)"
           width="100%"
