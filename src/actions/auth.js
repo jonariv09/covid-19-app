@@ -9,7 +9,6 @@ import {
 	signOut,
 } from "@firebase/auth";
 import { finishLoading, startLoading } from "./ui";
-import { noteLogout } from "./notes";
 
 export const startLoginEmailPassword = (email, password) => {
 	return async (dispatch) => {
@@ -31,9 +30,12 @@ export const startLoginEmailPassword = (email, password) => {
 
 export const startGoogleLogin = () => {
 	return (dispatch) => {
-		signInWithPopup(Auth, GoogleProvider).then(({ user }) =>
-			dispatch(login(user.uid, user.displayName))
-		);
+		signInWithPopup(Auth, GoogleProvider)
+      .then(({ user }) =>
+        dispatch(login(user.uid, user.displayName))
+      ).catch(({ message }) => {
+        console.log(message);
+      });
 	};
 };
 
@@ -65,7 +67,6 @@ export const startLogout = () => {
 	return async (dispatch) => {
 		await signOut(Auth);
 		dispatch(logout());
-		dispatch(noteLogout());
 	};
 };
 

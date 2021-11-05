@@ -11,6 +11,8 @@ import { PublicRoute } from './PublicRoute';
 import { onAuthStateChanged } from "firebase/auth";
 import { login } from '../actions/auth';
 import { Auth } from '../firebase/firebase-config';
+import { AuthRouter } from './AuthRouter';
+import { CovidScreen } from '../components/covid/CovidScreen';
 
 
 export const AppRouter = () => {
@@ -59,7 +61,7 @@ export const AppRouter = () => {
                     isAuthenticated={isloggedIn}
                     exact
                     path="/"
-                    component={ JournalScreen }
+                    component={ CovidScreen }
                 />
 
                 <Redirect to="/auth/login" />
