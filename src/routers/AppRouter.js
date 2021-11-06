@@ -44,12 +44,6 @@ export const AppRouter = () => {
 							isAuthenticated={isloggedIn}
 						/>
 
-						{/* <Route
-                      exact
-                      path="/"
-                      component={ DashboardRoute }
-                  /> */}
-
 						<PrivateRoute
 							isAuthenticated={isloggedIn}
 							path="/"

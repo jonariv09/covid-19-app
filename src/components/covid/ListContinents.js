@@ -22,8 +22,6 @@ export const DataGridRowGrouping = () => {
 		API.get("statistics").then(function (response) {
 			const { response: statisticsData } = response.data;
 			setStatisticsData(statisticsData);
-
-			console.log(statisticsData);
 		});
 
 		window.addEventListener("load", onLoad);
@@ -133,36 +131,6 @@ export const DataGridRowGrouping = () => {
 					field="tests"
 					cellUpdating={onTestsCellUpdate}
 				/>
-
-				{/* <IgrDateTimeColumn
-					field="Birthday"
-					headerText="Date of Birth"
-					horizontalAlignment="right"
-					width="*>160"
-				/>
-				<IgrImageColumn
-					field="CountryFlag"
-					headerText="Country"
-					width="*>160"
-					paddingTop="5"
-					paddingBottom="5"
-					contentOpacity="1"
-					horizontalAlignment="center"
-				/>
-				<IgrTextColumn field="Street" headerText="Address" width="*>160" />
-				<IgrNumericColumn
-					field="Salary"
-					headerText="Salary"
-					width="*>130"
-					positivePrefix="$"
-					showGroupingSeparator="true"
-				/>
-				<IgrTextColumn
-					field="City"
-					width="*>120"
-					headerText="City"
-					horizontalAlignment="center"
-				/> */}
 			</IgrDataGrid>
 		</div>
 	);

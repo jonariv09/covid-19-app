@@ -12,8 +12,6 @@ import { finishLoading, startLoading } from "./ui";
 
 export const startLoginEmailPassword = (email, password) => {
 	return async (dispatch) => {
-		console.log(email, password);
-
 		try {
 			dispatch(startLoading());
 
@@ -31,11 +29,10 @@ export const startLoginEmailPassword = (email, password) => {
 export const startGoogleLogin = () => {
 	return (dispatch) => {
 		signInWithPopup(Auth, GoogleProvider)
-      .then(({ user }) =>
-        dispatch(login(user.uid, user.displayName))
-      ).catch(({ message }) => {
-        console.log(message);
-      });
+			.then(({ user }) => dispatch(login(user.uid, user.displayName)))
+			.catch(({ message }) => {
+				console.log(message);
+			});
 	};
 };
 

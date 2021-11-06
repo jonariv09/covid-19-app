@@ -6,7 +6,6 @@ export const LoginScreen = () => {
 	const dispatch = useDispatch();
 
 	const handleGoogleLogin = () => {
-		console.log("Hi!!");
 		dispatch(startGoogleLogin());
 	};
 
