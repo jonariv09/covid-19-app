@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IgrDataGridModule, IgrTemplateColumn } from "igniteui-react-grids";
 import { IgrDataGrid } from "igniteui-react-grids";
-import { IgrImageColumn } from "igniteui-react-grids";
 import { IgrTextColumn } from "igniteui-react-grids";
 import { IgrNumericColumn } from "igniteui-react-grids";
-import { IgrDateTimeColumn } from "igniteui-react-grids";
 import { IgrColumnGroupDescription } from "igniteui-react-grids";
 import { IgrGridColumnOptionsModule } from "igniteui-react-grids";
 
@@ -55,45 +53,44 @@ export const DataGridRowGrouping = () => {
 		this.grid.groupDescriptions.add(population);
 	};
 
-  const onCasesCellUpdating = (s, e) => {
-    const content = e.content;
-    const info = e.cellInfo;
-    const cases = info.rowItem.cases;
+	const onCasesCellUpdating = (s, e) => {
+		const content = e.content;
+		const info = e.cellInfo;
+		const cases = info.rowItem.cases;
 
-    if (content.childElementCount === 0) {
+		if (content.childElementCount === 0) {
+			let element = document.createElement("span");
+			element.style.fontSize = "14px";
+			element.textContent = cases["total"];
+			content.appendChild(element);
+		}
+	};
 
-      let element = document.createElement("span");
-      element.style.fontSize = "14px";
-      element.textContent = cases["total"]
-      content.appendChild(element);
-    };
-  }
+	const onDeathsCellUpdating = (s, e) => {
+		const content = e.content;
+		const info = e.cellInfo;
+		const deaths = info.rowItem.deaths;
 
-  const onDeathsCellUpdating = (s, e) => {
-    const content = e.content;
-    const info = e.cellInfo;
-    const deaths = info.rowItem.deaths;
+		if (content.childElementCount === 0) {
+			let element = document.createElement("span");
+			element.style.fontSize = "14px";
+			element.textContent = deaths["total"];
+			content.appendChild(element);
+		}
+	};
 
-    if (content.childElementCount === 0) {
-      let element = document.createElement("span");
-      element.style.fontSize = "14px";
-      element.textContent = deaths["total"]
-      content.appendChild(element);
-    }
-  }
+	const onTestsCellUpdate = (s, e) => {
+		const content = e.content;
+		const info = e.cellInfo;
+		const tests = info.rowItem.tests;
 
-  const onTestsCellUpdate = (s, e) => {
-    const content = e.content;
-    const info = e.cellInfo;
-    const tests = info.rowItem.tests;
-
-    if (content.childElementCount === 0) {
-      let element = document.createElement("span");
-      element.style.fontSize = "14px";
-      element.textContent = tests["total"]
-      content.appendChild(element);
-    }
-  }
+		if (content.childElementCount === 0) {
+			let element = document.createElement("span");
+			element.style.fontSize = "14px";
+			element.textContent = tests["total"];
+			content.appendChild(element);
+		}
+	};
 
 	return (
 		<div className="container sample mt-8">
@@ -117,14 +114,25 @@ export const DataGridRowGrouping = () => {
 					width="*>110"
 				/>
 
-        <IgrTemplateColumn headerText="Cases" field="cases" cellUpdating={onCasesCellUpdating} width="*>180"/>
-        
-        <IgrTemplateColumn headerText="Deaths" field="deaths" cellUpdating={onDeathsCellUpdating} he/>
-        
-        <IgrTemplateColumn headerText="Tests" field="tests" cellUpdating={onTestsCellUpdate} />
+				<IgrTemplateColumn
+					headerText="Cases"
+					field="cases"
+					cellUpdating={onCasesCellUpdating}
+					width="*>180"
+				/>
 
+				<IgrTemplateColumn
+					headerText="Deaths"
+					field="deaths"
+					cellUpdating={onDeathsCellUpdating}
+					he
+				/>
 
-
+				<IgrTemplateColumn
+					headerText="Tests"
+					field="tests"
+					cellUpdating={onTestsCellUpdate}
+				/>
 
 				{/* <IgrDateTimeColumn
 					field="Birthday"
@@ -158,4 +166,4 @@ export const DataGridRowGrouping = () => {
 			</IgrDataGrid>
 		</div>
 	);
-}
+};
