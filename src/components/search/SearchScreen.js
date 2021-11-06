@@ -5,6 +5,7 @@ import { getCountryDetails } from "../../helpers/getCountryDetails";
 import "./search.css";
 import { useLocation } from "react-router";
 import API from "../../api/api";
+import { ListCountries } from "../covid/ListCountries";
 
 export const SearchScreen = ({ history }) => {
 	const [statisticData, setStatisticData] = useState();
@@ -89,6 +90,10 @@ export const SearchScreen = ({ history }) => {
 						</div>
 					)}
 				</div>
+			</div>
+
+			<div>
+				<ListCountries />
 			</div>
 		</>
 	);
