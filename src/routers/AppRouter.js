@@ -13,6 +13,8 @@ import { login } from '../actions/auth';
 import { Auth } from '../firebase/firebase-config';
 import { AuthRouter } from './AuthRouter';
 import { CovidScreen } from '../components/covid/CovidScreen';
+import { DashboardRoute } from './DashboardRoute';
+import { SearchScreen } from '../components/search/SearchScreen';
 
 
 export const AppRouter = () => {
@@ -43,32 +45,37 @@ export const AppRouter = () => {
   }
 
   return (
-    <Router>
-        <div>
-            <Switch>
-                {/* <Route
-                    path="/auth"
-                    component={ AuthRouter }
-                /> */}
+    <>
 
-                <PublicRoute
-                    path="/auth"
-                    component={ AuthRouter }
-                    isAuthenticated={isloggedIn}
-                />
+      <Router>
+          <div>
+              <Switch>
 
-                <PrivateRoute
-                    isAuthenticated={isloggedIn}
+                  <PublicRoute
                     exact
-                    path="/"
-                    component={ CovidScreen }
-                />
+                    path="/auth"
+                    component={ AuthRouter }
+                    isAuthenticated={isloggedIn}
+                  />
 
-                <Redirect to="/auth/login" />
+                  {/* <Route
+                      exact
+                      path="/"
+                      component={ DashboardRoute }
+                  /> */}
 
-            </Switch>
-        </div>
-    </Router>
+                  <PrivateRoute
+                      isAuthenticated={isloggedIn}
+                      path="/"
+                      component={ DashboardRoute }
+                  />
+
+                  <Redirect to="/auth/login" />
+
+              </Switch>
+          </div>
+      </Router>
+    </>
   )
 
 }
