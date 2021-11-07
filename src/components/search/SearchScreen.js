@@ -6,10 +6,14 @@ import "./search.css";
 import { useLocation } from "react-router";
 import API from "../../api/api";
 import { ListCountries } from "../covid/ListCountries";
+import { useDispatch, useSelector } from "react-redux";
+import { startFilteredStatistics } from "../../actions/statistics";
 
 export const SearchScreen = ({ history }) => {
 	const [statisticData, setStatisticData] = useState();
-	const [values, handleInputChange] = useForm({ searchField: "" });
+  const { filteredResults } = useSelector(state => state.statistics)
+  const dispatch = useDispatch();
+  const [values, handleInputChange] = useForm({ searchField: "" });
 
 	const { searchField } = values;
 
@@ -31,10 +35,19 @@ export const SearchScreen = ({ history }) => {
 		fetchData();
 	}, [setStatisticData]);
 
-	const statisticsFiltered = useMemo(
-		() => getCountryDetails(statisticData, q),
-		[statisticData, q]
-	);
+  useEffect(() => {
+    dispatch(startFilteredStatistics(statisticData, q));
+  }, [statisticData, q]);
+
+	// const statisticsFiltered = useMemo(
+	// 	() => {
+  //     let result = getCountryDetails(statisticData, q);
+
+  //     dispatch(setFilteredStatistics(result));
+  //     return result;
+  //   },
+	// 	[statisticData, q]
+	// );
 
 	const handleSearch = (e) => {
 		e.preventDefault();
@@ -77,7 +90,7 @@ export const SearchScreen = ({ history }) => {
 						</div>
 					)}
 
-					{q !== "" && statisticsFiltered.length === 0 && (
+					{q !== "" && filteredResults.length === 0 && (
 						<div
 							className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
 							role="alert"
