@@ -6,7 +6,7 @@ import { Navbar } from "../components/ui/Navbar";
 
 export const DashboardRoute = () => {
 	return (
-		<>
+		<div className="bg-gray-300">
 			<Navbar />
 
 			<div className="container">
@@ -17,6 +17,6 @@ export const DashboardRoute = () => {
 					<Route component={ PageNotFound }/>
 				</Switch>
 			</div>
-		</>
+		</div>
 	);
 };
