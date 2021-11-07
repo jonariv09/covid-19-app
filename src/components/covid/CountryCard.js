@@ -1,12 +1,27 @@
 
 
 export const CountryCard = (statistic) => {
+
+  const getTime = date => {
+    const newDate = new Date(date);
+    let options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      weekday: "long",
+      hour: "numeric",
+      minute: "numeric",
+    }
+    console.log(newDate.toISOString().slice(0, 10));
+    return Intl.DateTimeFormat("en-US", options).format(newDate);
+  }
+  
   
   return (
     <>
       <div className="w-full bg-gray-900 rounded-lg sahdow-lg p-6 ">
         <div className="flex items-center w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5">
             <span className="text-white font-semibold"> Continent: </span> 
@@ -15,7 +30,7 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex items-center w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5">
             <span className="text-white font-semibold"> Population: </span> 
@@ -24,7 +39,7 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5 flex flex-col">
             <span className="text-white font-semibold"> Cases: </span>
@@ -53,7 +68,7 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5 flex flex-col">
             <span className="text-white font-semibold"> Deaths: </span>
@@ -73,7 +88,7 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5 flex flex-col">
             <span className="text-white font-semibold"> Tests: </span>
@@ -90,7 +105,7 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex items-center w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <span className="ml-5">
             <span className="text-white font-semibold"> Day: </span> 
@@ -99,11 +114,11 @@ export const CountryCard = (statistic) => {
         </div>
 
         <div className="flex items-start w-full text-sm mb-1">
-          <div class="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
+          <div className="w-0 h-0 pb-3 pl-3 rounded-md bg-indigo-500 text-white">
           </div>
           <div className="ml-5">
             <span className="text-white font-semibold"> Time: </span> 
-            <span className="text-white"> { statistic.time } </span>
+            <span className="text-white"> { getTime(statistic.time) } </span>
           </div>
         </div>
 

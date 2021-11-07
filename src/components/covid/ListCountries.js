@@ -14,7 +14,10 @@ export const ListCountries = () => {
 					
           {
             filteredResults && filteredResults.map(statistic => (
-              <CountryCard { ...statistic }/>
+              <CountryCard
+                key={statistic.country}
+                { ...statistic }
+              />
             ))
           }
 

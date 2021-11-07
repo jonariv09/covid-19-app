@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import queryString from "query-string";
-import { getCountryDetails } from "../../helpers/getCountryDetails";
 import "./search.css";
 import { useLocation } from "react-router";
 import API from "../../api/api";
@@ -37,17 +36,8 @@ export const SearchScreen = ({ history }) => {
 
   useEffect(() => {
     dispatch(startFilteredStatistics(statisticData, q));
-  }, [statisticData, q]);
+  }, [statisticData, q, dispatch]);
 
-	// const statisticsFiltered = useMemo(
-	// 	() => {
-  //     let result = getCountryDetails(statisticData, q);
-
-  //     dispatch(setFilteredStatistics(result));
-  //     return result;
-  //   },
-	// 	[statisticData, q]
-	// );
 
 	const handleSearch = (e) => {
 		e.preventDefault();
