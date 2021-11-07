@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Redirect, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import { onAuthStateChanged } from "firebase/auth";
@@ -8,6 +8,7 @@ import { login } from "../actions/auth";
 import { Auth } from "../firebase/firebase-config";
 import { AuthRouter } from "./AuthRouter";
 import { DashboardRoute } from "./DashboardRoute";
+import { PageNotFound } from "../components/404/PageNotFound";
 
 export const AppRouter = () => {
 	const dispatch = useDispatch();
@@ -37,6 +38,8 @@ export const AppRouter = () => {
 			<Router>
 				<div>
 					<Switch>
+						
+
 						<PublicRoute
 							exact
 							path="/auth"
@@ -50,7 +53,10 @@ export const AppRouter = () => {
 							component={DashboardRoute}
 						/>
 
-						<Redirect to="/auth/login" />
+						<Route
+							component={ PageNotFound }
+						/>
+						{/* <Redirect to="/pagenotfound" /> */}
 					</Switch>
 				</div>
 			</Router>
