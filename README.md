@@ -1,4 +1,4 @@
-# Link to the deployed project
+# Link to deployed project
 
 https://covid19appnicasource.herokuapp.com/search?q=spain
 
