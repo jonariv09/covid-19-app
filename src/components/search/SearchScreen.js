@@ -35,7 +35,7 @@ export const SearchScreen = ({ history }) => {
 	}, [setStatisticData]);
 
   useEffect(() => {
-    dispatch(startFilteredStatistics(statisticData, q));
+		dispatch(startFilteredStatistics(statisticData, q));
   }, [statisticData, q, dispatch]);
 
 

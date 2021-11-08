@@ -34,7 +34,6 @@ describe("SearchScreen tests", () => {
 
   test("renders <SearchScreen /> component", () => {
     expect(wrapper).toMatchSnapshot();
-    // expect(wrapper.find(Foo));
-  })
+  });
 
 })
