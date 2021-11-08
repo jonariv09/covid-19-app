@@ -93,10 +93,10 @@ export const SearchScreen = ({ history }) => {
 						</div>
 					)}
 				</div>
-			</div>
 
-			<div>
-				<ListCountries />
+				<div>
+					<ListCountries />
+				</div>
 			</div>
 		</>
 	);
