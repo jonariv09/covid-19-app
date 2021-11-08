@@ -3,9 +3,16 @@ import { Transition } from "@headlessui/react";
 import { RiVirusLine } from "react-icons/ri";
 import { FiUser } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
+import { startLogout } from "../../actions/auth";
+import { useDispatch } from "react-redux";
 
 export const Navbar = () => {
 	const [isShowing, setIsShowing] = useState(false);
+	const dispatch = useDispatch();
+
+	const handleLogout = () => {
+		dispatch(startLogout());
+	}
 
 	return (
 		<>
@@ -133,15 +140,15 @@ export const Navbar = () => {
 											aria-labelledby="user-menu-button"
 											tabIndex="-1"
 										>
-											<a
-												href="/logout"
+											<button
 												className="block px-4 py-2 text-sm text-gray-700"
 												role="menuitem"
 												tabIndex="-1"
 												id="user-menu-item-2"
+												onClick={handleLogout}
 											>
 												Sign out
-											</a>
+											</button>
 										</div>
 									</Transition>
 								</div>
