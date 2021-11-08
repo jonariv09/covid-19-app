@@ -12,7 +12,6 @@ export const CountryCard = (statistic) => {
       hour: "numeric",
       minute: "numeric",
     }
-    console.log(newDate.toISOString().slice(0, 10));
     return Intl.DateTimeFormat("en-US", options).format(newDate);
   }
   

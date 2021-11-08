@@ -80,12 +80,9 @@ describe("Testing in action statistics", () => {
 	});
 
   test("startFilteredStatistics should dipatch filteredStatistics", async () => {
-    // console.log(mockDataFiltered)
     store.dispatch(startFilteredStatistics(mockDataFiltered, "Micronesia"));
 
     const actions = store.getActions();
-
-    // console.log(actions[0])
 
     expect(actions[0]).toEqual({
       type: types.filteredResults,
